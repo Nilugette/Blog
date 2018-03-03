@@ -1,0 +1,32 @@
+<main>
+<section class="write_new_article">
+<p class="home_title"> <a href="add_post.php">Cliquez-ici</a> et partagez avec nous vos meilleurs moments</p>
+	
+</section>
+<article class="write_new_article">
+	<h3 class="home_title">Voici les derniers témoignages :</h3>
+	<div class="target">
+		
+		<?php 
+		$aTmpCat = [];
+		foreach($aTab as $ikey => $value): 
+		?>
+			<h4> <?php 
+
+			if(!in_array($value['Name'], $aTmpCat)) {
+				array_push($aTmpCat, $value['Name']);
+				echo " - ".htmlspecialchars($value['Name']). " : "; 
+			}
+			?> 
+			</h4>
+
+			<p>De <span class="italique"><?=  htmlspecialchars($value['FirstName'])." ".htmlspecialchars($value['LastName']) ; ?></span> le <span class="italique"><?= $value['CreationTimestamp']; ?></span> 
+			</p>
+			<p> 
+			<span class="souligner"><a href="show_post.php?Id=<?= $value['Id']; ?>"><?= htmlspecialchars($value['Title']); ?></a></span>  : <?= htmlspecialchars($value['Contents']); ?> 
+			</p>
+		<?php endforeach; ?>
+	</div>
+</article>
+</main>
+	

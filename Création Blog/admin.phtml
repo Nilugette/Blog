@@ -1,0 +1,45 @@
+<main>
+<section class="formulaire">
+<div class="write_new_article">
+    <div class="comments">
+	<form class="generic-form" action="modify.php" method="post">
+    <input type="hidden" name="id_post" value="<?= (int) $_GET['Id']; ?>" />
+        <ul>
+            <li>
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title" value="<?= 
+htmlspecialchars($aTab['Title']);?>">
+            </li>
+            <li>
+                <label class="textarea" for="contents">Article :</label>
+                <textarea id="contents" name="contents" rows="15"><?= htmlspecialchars($aTab['Contents']);?></textarea>
+            </li>
+            <li>
+                <label for="author">Auteur :</label>
+                <select class="input" id="author" name="author">
+                    
+                <option value="<?= $aTab['Author_Id'];?>"><?= htmlspecialchars($aTab['FirstName']).' '.($aTab['LastName']); ?></option>
+                        
+                </select>
+            </li>
+            <li>
+                <label for="category">Catégorie :</label>
+                <select class="input" id="category" name="category">
+                       
+                         <?php foreach($aTab2 as $aValues): ?>
+                        <option value="<?= htmlspecialchars($aValues['Id']);?>"><?= htmlspecialchars($aValues['Name']);?></option>
+                        <?php endforeach ?>
+
+                </select>
+            </li>
+            <li>
+                <button id="submit" name="submit" class="button button-primary">Modifier</button>
+                <a class="button button-cancel" href="index.php">Annuler</a>
+            </li>
+        </ul>
+	</form>
+	<div style="width: 100%; height: 3em;"></div>
+    <div class="comments">
+    </div>
+</section>
+<main>

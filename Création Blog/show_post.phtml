@@ -1,0 +1,43 @@
+<main class="show_post">
+<section class="write_new_article">
+<h3 class="home_title">Votre témoignage :</h3>
+<hr style="width:50%; color:#2c4772">
+	<p>De <span class="italique"><?=  $aTab['FirstName']." ".$aTab ['LastName'] ; ?></span> le <span class="italique"><?= $aTab['CreationTimestamp']; ?></span> 
+			</p>
+	<p> 
+	<span class="souligner"><?= htmlspecialchars($aTab['Title']); ?></span>  : <?= htmlspecialchars($aTab['Contents']); ?> 
+	</p>
+	<p class="ensemble"><a href="admin.php?Id=<?= $aTab['Id'] ?>">Modifier</a></p>
+	<p class="ensemble"><a href="delete.php?Id=<?= $aTab['Id'] ?>">Supprimer</a></p>
+		<div class="tool-bar">
+			<p>Qu'en pensez-vous ? <i class="fa fa-comments fa-2x" aria-hidden="true"></i> </p>
+		</div>
+</section>
+<article class="write_new_article">
+	<h3 class="home_title">Vos commentaires :</h3>
+	<hr style="width:50%; color:#2c4772">
+	<?php foreach($aComments as $iKey => $Comment): ?>
+	<p>Posté par : </p><p><span class="italique"><?=  $Comment['NickName']; ?> : </span>
+	 <?=  $Comment['Contents'] ; ?>
+	<?php endforeach; ?>
+
+</article>	
+
+<section class="hide">
+  	<form  class="comments" action="" method="post">
+    	<p>
+            <label for="user">Pseudo :</label>
+            <input type="text" name="pseudo" id="user" />
+        </p>
+        <p>
+        	 <label for="comment">Commentaire :</label>
+             <textarea name="comment" id="comment" rows="15"></textarea>
+        </p>
+        
+        <p>
+ 			<input class="button-primary" type="submit" value="Enregistrer" />
+        </p>
+	</form>
+</section>
+<main>
+
